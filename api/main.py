@@ -75,9 +75,9 @@ async def show_form5(request: Request):
 @app.post("/result5", response_class=HTMLResponse)
 async def process_form5(request: Request, user: int = Form(...), movie: str = Form(...)):
     # Llama a la función importada y pasa las variables de entrada como argumentos
-    #p = Predict(user, movie)
-    #result = p.predict()
-    result = 'La Pelicula no es recomendada para este usuario'
+    p = Predict(user, movie)
+    result = p.predict()
+    
 
     # Devuelve una plantilla de Jinja2 con el resultado
     return templates.TemplateResponse("result5.html", {"request": request, "result": result})
